@@ -1,5 +1,7 @@
+"use client"
 import { vegetables } from "@/data/vegetables"
 import Link from "next/link"
+import toast from "react-hot-toast"
 
 export default async function ProductDetails({ params }) {
   const { id } = await params
@@ -23,7 +25,7 @@ export default async function ProductDetails({ params }) {
     <div className="min-h-screen bg-gray-50 py-10 px-4">
       <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden grid md:grid-cols-2">
 
-      
+
         <div className="bg-gray-100">
           <img
             src={product.image}
@@ -32,7 +34,7 @@ export default async function ProductDetails({ params }) {
           />
         </div>
 
-        
+
         <div className="p-6 md:p-10 flex flex-col justify-between">
 
           <div>
@@ -44,14 +46,14 @@ export default async function ProductDetails({ params }) {
               Category: <span className="font-medium">{product.category}</span>
             </p>
 
-        
+
             <div className="mt-4">
               <span className="text-3xl font-bold text-green-600">
                 ${product.price}
               </span>
             </div>
 
-            
+
             <div className="flex gap-2 mt-4 flex-wrap">
               {product.isOrganic && (
                 <span className="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">
@@ -64,16 +66,19 @@ export default async function ProductDetails({ params }) {
               </span>
             </div>
 
-            
+
             <p className="text-gray-600 mt-5 leading-relaxed">
               {product.description ||
                 "Fresh and high-quality vegetable directly from farm. Healthy choice for your daily meals."}
             </p>
           </div>
 
-        
+
           <div className="mt-8 flex gap-3">
-            <button className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold transition">
+            <button
+              onClick={() => toast.success("🛒 Added to cart successfully!")}
+              className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold transition"
+            >
               🛒 Add to Cart
             </button>
 
