@@ -57,7 +57,7 @@ export default function CartPage() {
     
         {cart.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-gray-500 text-lg">Your cart is empty 😢</p>
+            <p className="text-gray-800 text-lg">Your cart is empty 😢</p>
           </div>
         ) : (
           <>
@@ -77,7 +77,7 @@ export default function CartPage() {
                     />
 
                     <div>
-                      <h2 className="text-lg font-semibold">{item.name}</h2>
+                      <h2 className="text-lg text-black font-semibold">{item.name}</h2>
                       <p className="text-gray-500 text-sm">
                         Price: ${item.price}
                       </p>

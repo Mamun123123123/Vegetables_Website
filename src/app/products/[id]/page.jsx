@@ -25,7 +25,7 @@ export default async function ProductDetails({ params }) {
 
     const updatedCart = [...existingCart, newItem]
     localStorage.setItem("cart", JSON.stringify(updatedCart))
-
+   alert("🛒 Added to cart successfully!")
     toast.success("🛒 Added to cart successfully!")
   }
 
@@ -63,11 +63,11 @@ export default async function ProductDetails({ params }) {
         <div className="p-6 md:p-10 flex flex-col justify-between">
 
           <div>
-            <h1 className="text-3xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-black">
               {product.name}
             </h1>
 
-            <p className="text-gray-500 mt-1">
+            <p className="text-black mt-1">
               Category: <span className="font-medium">{product.category}</span>
             </p>
 

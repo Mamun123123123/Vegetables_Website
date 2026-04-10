@@ -21,7 +21,7 @@ const Product = () => {
       )
 
   return (
-    <div className="p-6">
+    <div className="p-6 bg-slate-50 text-black">
 
       <h1 className="text-3xl items-center justify-center flex  font-bold mb-4">
         🥦 All Vegetables
