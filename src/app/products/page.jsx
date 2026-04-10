@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { vegetables } from "@/data/vegetables"
+import Link from "next/link"
+import Image from "next/image"
 
 const Product = () => {
   const [selectedCategory, setSelectedCategory] = useState("All")
@@ -82,9 +84,20 @@ const Product = () => {
                 Stock: {veg.stock}
               </p>
 
-              <button className="mt-3 w-full bg-green-600 text-white py-1 rounded hover:bg-green-700">
-                Add to Cart
-              </button>
+              <div className="flex gap-2 mt-3">
+  
+  <button className="w-1/2 bg-green-600 text-white py-1 rounded hover:bg-green-700">
+    Add to Cart
+  </button>
+
+  <Link
+    href={`/products/${veg.id}`}
+    className="w-1/2 text-center bg-blue-600 text-white py-1 rounded hover:bg-blue-700"
+  >
+    Details
+  </Link>
+
+</div>
             </div>
 
           </div>
