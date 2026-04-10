@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { vegetables } from "@/data/vegetables"
 import Link from "next/link"
-import Image from "next/image"
 
 const Product = () => {
   const [selectedCategory, setSelectedCategory] = useState("All")
@@ -18,8 +17,8 @@ const Product = () => {
     selectedCategory === "All"
       ? vegetables
       : vegetables.filter(
-          (v) => v.category === selectedCategory
-        )
+        (v) => v.category === selectedCategory
+      )
 
   return (
     <div className="p-6">
@@ -28,24 +27,23 @@ const Product = () => {
         🥦 All Vegetables
       </h1>
 
-    
+
       <div className="flex flex-wrap gap-2 mb-6 rounded-4xl">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className={`px-3 py-1 rounded border ${
-              selectedCategory === cat
+            className={`px-3 py-1 rounded border ${selectedCategory === cat
                 ? "bg-green-600 text-black"
                 : "bg-white text-black"
-            }`}
+              }`}
           >
             {cat}
           </button>
         ))}
       </div>
 
-  
+
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {filteredProducts.map((veg) => (
           <div
@@ -84,20 +82,17 @@ const Product = () => {
                 Stock: {veg.stock}
               </p>
 
-              <div className="flex gap-2 mt-3">
-  
-  <button className="w-1/2 bg-green-600 text-white py-1 rounded hover:bg-green-700">
-    Add to Cart
-  </button>
+              <div className="flex gap-2 mt-3 justify-center items-center">
 
-  <Link
-    href={`/products/${veg.id}`}
-    className="w-1/2 text-center bg-blue-600 text-white py-1 rounded hover:bg-blue-700"
-  >
-    Details
-  </Link>
 
-</div>
+                <Link
+                  href={`/products/${veg.id}`}
+                  className="w-1/2 text-center bg-blue-600 text-white py-1 rounded hover:bg-blue-700"
+                >
+                  Details
+                </Link>
+
+              </div>
             </div>
 
           </div>

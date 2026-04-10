@@ -4,6 +4,31 @@ import Link from "next/link"
 import toast from "react-hot-toast"
 
 export default async function ProductDetails({ params }) {
+
+  const handleAddToCart = () => {
+    const existingCart = JSON.parse(localStorage.getItem("cart")) || []
+
+    const newItem = {
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: 1,
+    }
+
+    const alreadyExists = existingCart.find((item) => item.id === product.id)
+
+    if (alreadyExists) {
+      toast.error("Already in cart!")
+      return
+    }
+
+    const updatedCart = [...existingCart, newItem]
+    localStorage.setItem("cart", JSON.stringify(updatedCart))
+
+    toast.success("🛒 Added to cart successfully!")
+  }
+
   const { id } = await params
 
   const product = vegetables.find((v) => v.id === Number(id))
@@ -76,7 +101,7 @@ export default async function ProductDetails({ params }) {
 
           <div className="mt-8 flex gap-3">
             <button
-              onClick={() => toast.success("🛒 Added to cart successfully!")}
+              onClick={handleAddToCart}
               className="flex-1 bg-green-600 hover:bg-green-700 text-white py-3 rounded-xl font-semibold transition"
             >
               🛒 Add to Cart
